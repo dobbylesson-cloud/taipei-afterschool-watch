@@ -9,6 +9,12 @@ STATUS_ORDER = {"進行中": 0, "即將開始": 1, "已截止": 2, "日期未識
 
 
 def compute_status(start: date | None, end: date | None, today: date) -> str:
+    # 只有截止日（多半是「報名至 X 日止」）：仍可判斷是否已截止
+    if not start and end:
+        return "已截止" if today > end else "進行中"
+    # 只有開始日（多半是「報名開放日 X」）：只能判斷是否還沒開始
+    if start and not end:
+        return "即將開始" if today < start else "進行中"
     if not start or not end:
         return "日期未識別"
     if today < start:
