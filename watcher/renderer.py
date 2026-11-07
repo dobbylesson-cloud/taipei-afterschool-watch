@@ -81,7 +81,7 @@ TEMPLATE = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>臺北市國小課後社團公告監測</title>
+<title>雙北國小課後社團公告監測</title>
 <style>
 :root{
   --bg:#f5f7fa; --card:#ffffff; --ink:#16212e; --muted:#65758a; --line:#e3e8ef;
@@ -156,8 +156,8 @@ footer{margin-top:26px;color:var(--muted);font-size:12.5px;line-height:1.9}
 <div class="wrap">
   <header>
     <div>
-      <h1>臺北市國小課後社團公告監測</h1>
-      <div class="sub">掃描臺北市教育局與各國小公告，抽取「申請開始／結束日期」。資料為規則式抽取，<b>需人工複核</b>。</div>
+      <h1>雙北國小課後社團公告監測</h1>
+      <div class="sub">掃描雙北（臺北市、新北市）國小與教育局公告，抽取「申請開始／結束日期」。資料為規則式抽取，<b>需人工複核</b>。</div>
     </div>
     <div class="note">產生時間：__GENERATED__　·　資料筆數：__TOTAL__　·　最後執行：__LASTRUN__</div>
   </header>
