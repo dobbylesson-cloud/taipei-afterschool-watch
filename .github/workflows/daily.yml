@@ -28,19 +28,24 @@ jobs:
 
       # 用快取保存 SQLite 歷史，避免每天把 640KB 的 .db 提交進 git。
       # key 每次都不同（run_id），靠 restore-keys 前綴還原最近一份。
+      # 前綴改版（watch-db1 → watch-db2）等於強制重建資料庫。
       - name: 還原歷史資料庫
         uses: actions/cache@v4
         with:
           path: data/watch.db
-          key: watch-db-${{ github.run_id }}
+          key: watch-db2-${{ github.run_id }}
           restore-keys: |
-            watch-db-
+            watch-db2-
 
       - name: 安裝套件
         run: pip install -r requirements.txt
 
       - name: 執行掃描
         run: python run_daily.py
+
+      # 抽取規則更新後，讓既有公告也套用新規則（純本機運算，不連網）
+      - name: 重新抽取日期
+        run: python run_daily.py --reextract-only
 
       - name: 提交儀表板
         run: |
