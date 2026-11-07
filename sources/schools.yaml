@@ -24,7 +24,8 @@ settings:
   max_attachments_per_notice: 3
   user_agent: "TaipeiAfterSchoolBot/1.0 (+monitoring school club announcements; contact: local-user)"
   respect_robots: true
-  # 公告主題關鍵字：標題或內文命中即視為課後社團相關
+  # 公告主題關鍵字（弱）：只在「標題」命中時才算，且內文還要出現報名/招生/申請等行為詞。
+  # 目的是避免「學生社團」這類公文用語把無關公告（表揚、研習、競賽）也抓進來。
   keywords:
     - 課後照顧
     - 課後班
@@ -35,6 +36,18 @@ settings:
     - 冬令營
     - 夏令營
     - 安親
+  # 強關鍵字：內文任一處命中就收，不需要再看標題
+  strong_keywords:
+    - 課後照顧
+    - 課後學藝
+    - 課後班
+    - 課外社團
+    - 社團報名
+    - 才藝班
+    - 育樂營
+    - 冬令營
+    - 夏令營
+    - 安親班
   # 標題命中這些詞就排除（多為政令宣導／採購／裁罰類公文，不是社團報名）
   exclude_keywords:
     - 補習班
@@ -42,6 +55,21 @@ settings:
     - 通報
     - 招標
     - 採購
+    - 表揚
+    - 貢獻獎
+    - 樂齡
+    - 長者
+    - 徵件
+    - 招聘
+    - 徵才
+    - 教甄
+    - 代理教師
+    - 研習
+    - 志工
+    - 捐贈
+    - 社團法人
+    - 資優
+    - 資賦優異
   # 要抓的公告模組名稱（NSS）
   page_keys:
     - 最新消息
