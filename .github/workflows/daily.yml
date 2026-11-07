@@ -1,0 +1,55 @@
+name: 每日掃描
+
+on:
+  schedule:
+    # GitHub 的 cron 用 UTC；23:30 UTC = 隔天 07:30 台北時間
+    - cron: "30 23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-watch
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      # 用快取保存 SQLite 歷史，避免每天把 640KB 的 .db 提交進 git。
+      # key 每次都不同（run_id），靠 restore-keys 前綴還原最近一份。
+      - name: 還原歷史資料庫
+        uses: actions/cache@v4
+        with:
+          path: data/watch.db
+          key: watch-db-${{ github.run_id }}
+          restore-keys: |
+            watch-db-
+
+      - name: 安裝套件
+        run: pip install -r requirements.txt
+
+      - name: 執行掃描
+        run: python run_daily.py
+
+      - name: 提交儀表板
+        run: |
+          if [ -z "$(git status --porcelain index.html)" ]; then
+            echo "index.html 沒有變化，略過提交"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "chore: 更新儀表板 $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
