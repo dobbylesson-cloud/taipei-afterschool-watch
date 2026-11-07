@@ -24,6 +24,37 @@ _PUNCT_MAP = {
 _WEEKDAY = re.compile(r"(?:[(（]\s*(?:星期|週)[一二三四五六日天]\s*[)）])|(?:[(（]\s*[一二三四五六日天]\s*[)）])")
 _ROC_WORD = re.compile(r"民國")
 
+# 中文數字日期（三月一日、十二月十五日）→ 阿拉伯數字
+_CN_DIGITS = {"零": 0, "〇": 0, "一": 1, "二": 2, "兩": 2, "三": 3, "四": 4,
+              "五": 5, "六": 6, "七": 7, "八": 8, "九": 9}
+_CN_DATE_WORDS = re.compile(
+    r"([零〇一二兩三四五六七八九十]{1,3})\s*月\s*([零〇一二兩三四五六七八九十]{1,3})\s*日"
+)
+
+
+def _cn_number(s: str) -> int | None:
+    if not s:
+        return None
+    if s.isdigit():
+        return int(s)
+    if "十" in s:
+        head, _, tail = s.partition("十")
+        tens = _CN_DIGITS.get(head, 1) if head else 1
+        ones = _CN_DIGITS.get(tail, 0) if tail else 0
+        return tens * 10 + ones
+    return _CN_DIGITS.get(s)
+
+
+def _cn_dates_to_digits(text: str) -> str:
+    def repl(m: re.Match) -> str:
+        month = _cn_number(m.group(1))
+        day = _cn_number(m.group(2))
+        if month and day:
+            return f"{month}月{day}日"
+        return m.group(0)
+
+    return _CN_DATE_WORDS.sub(repl, text)
+
 
 def normalize(text: str) -> str:
     if not text:
@@ -33,6 +64,7 @@ def normalize(text: str) -> str:
         text = text.replace(k, v)
     text = _ROC_WORD.sub("", text)
     text = _WEEKDAY.sub("", text)
+    text = _cn_dates_to_digits(text)
     text = re.sub(r"[ \t]+", " ", text)
     return text
 
@@ -59,6 +91,33 @@ _ROC_YEAR_IN_TEXT = re.compile(r"(?<!\d)(\d{2,3})\s*年")
 _OPEN_START = re.compile(
     r"(?:即日起|自即日起|公告日起|本日起)\s*(?:至|到|~|-)\s*" + _CN_DATE.format(n=1)
 )
+
+# ---------- 只有單一日期（沒有區間）的情況 ----------
+# 「115年11月13日止」「115/11/30 前報名」→ 只有截止日
+_ONE_CN = _CN_DATE.format(n=9)
+_ONE_NUM = r"(?<!\d)" + _NUM_DATE.format(n=9) + r"(?!\d)"
+_TRAIL = r"\s*(?:\([^)]{0,10}\))?\s*"
+# 日期與「前/止/截止」之間可能夾「中午12:00」「下班前」等字樣
+_TRAIL_WIDE = r"[^。;;\n]{0,14}?"
+_DEADLINE_CN = re.compile(_ONE_CN + _TRAIL_WIDE + r"(?:前|止|截止)")
+_DEADLINE_NUM = re.compile(_ONE_NUM + _TRAIL_WIDE + r"(?:前|止|截止)")
+# 「截止日：115年11月20日」：截止字樣在日期前面
+_DEADLINE_BEFORE_CN = re.compile(
+    r"(?:截止|止)\s*(?:日|日期|時間|期限)?\s*:?\s*" + _ONE_CN
+)
+_DEADLINE_BEFORE_NUM = re.compile(
+    r"(?:截止|止)\s*(?:日|日期|時間|期限)?\s*:?\s*" + _ONE_NUM
+)
+# 「報名開放日：115年10月23日」→ 只有開始日
+_OPEN_LABEL = r"(?:報名開放|開放報名|報名開始|報名首日|接受報名|報名日期|報名時間)"
+_OPEN_SINGLE_CN = re.compile(_OPEN_LABEL + r"\s*(?:日|時間)?\s*:?\s*" + _ONE_CN)
+_OPEN_SINGLE_NUM = re.compile(_OPEN_LABEL + r"\s*(?:日|時間)?\s*:?\s*" + _ONE_NUM)
+# 只有截止日時，前後出現這些詞才算「報名截止」而不是活動結束
+_DEADLINE_WORDS = (
+    "報名", "申請", "受理", "登記", "招生", "截止", "期限",
+    "繳交", "上傳", "送件", "寄件", "回覆",
+)
+
 # 出現在日期區間前後、可用來判斷「這是報名/申請期間」的詞
 _APPLY_WORDS = (
     "報名期間", "報名日期", "報名時間", "報名", "申請期間", "申請日期", "申請",
@@ -158,6 +217,20 @@ def _score(text: str, start: int, end: int, both_years: bool, has_qi_zhi: bool) 
     return score
 
 
+def _parse_single(m: re.Match, ctx_year: int, published: date | None) -> date | None:
+    """從 n=9 的單一日期 regex 取得日期；沒寫年份且早於公告日過多則視為隔年。"""
+    raw_y = m.group("y9")
+    month = m.group("m9")
+    day = m.group("d9")
+    if month is None or day is None:
+        return None
+    year = _to_ad(raw_y, ctx_year)
+    dt = _make_date(year, int(month), int(day))
+    if dt and raw_y is None and published and dt < published - _BACKSTEP:
+        dt = _make_date(year + 1, int(month), int(day))
+    return dt
+
+
 def extract_period(raw_text: str, published: date | None = None) -> Extracted:
     text = normalize(raw_text)
     if not text:
@@ -241,16 +314,69 @@ def extract_period(raw_text: str, published: date | None = None) -> Extracted:
             )
         )
 
+    # 只有截止日（「115年11月13日止」「115/11/30 前報名」）
+    for pat, rule in (
+        (_DEADLINE_CN, "deadline-only"),
+        (_DEADLINE_NUM, "deadline-only-num"),
+        (_DEADLINE_BEFORE_CN, "deadline-before"),
+        (_DEADLINE_BEFORE_NUM, "deadline-before-num"),
+    ):
+        for m in pat.finditer(text):
+            end = _parse_single(m, ctx_year, published)
+            if not end:
+                continue
+            before = text[max(0, m.start() - 40):m.start()]
+            after = text[m.end():m.end() + 20]
+            if any(lbl in before for lbl in _EXCLUDE_LABELS):
+                continue
+            if not any(w in before + after for w in _DEADLINE_WORDS):
+                continue
+            # 「即日起…截止」：開始日以公告日推算
+            start = None
+            if published and re.search(r"(即日起|本日起|公告日起)", before):
+                start = published
+            candidates.append(
+                Extracted(
+                    start=start,
+                    end=end,
+                    evidence=_snippet(text, m.start(), m.end()),
+                    confidence=max(_score(text, m.start(), m.end(), False, False), 3.5),
+                    rule=rule,
+                    apply_ctx=True,
+                )
+            )
+
+    # 只有開始日（「報名開放日：115年10月23日」）
+    for pat, rule in ((_OPEN_SINGLE_CN, "open-only"), (_OPEN_SINGLE_NUM, "open-only-num")):
+        for m in pat.finditer(text):
+            start = _parse_single(m, ctx_year, published)
+            if not start:
+                continue
+            candidates.append(
+                Extracted(
+                    start=start,
+                    end=None,
+                    evidence=_snippet(text, m.end() - 20, m.end()),
+                    confidence=max(_score(text, m.start(), m.end(), False, False), 3.5),
+                    rule=rule,
+                    apply_ctx=True,
+                )
+            )
+
+    # 只保留「看起來是報名/申請期間」的候選，避免抓到活動日期或繳費區間
     if not candidates:
         return Extracted(None, None, "", 0.0, "no-match")
 
-    # 只保留「看起來是報名/申請期間」的候選，避免抓到活動日期或繳費區間
     applied = [c for c in candidates if c.apply_ctx]
     if not applied:
         return Extracted(None, None, "", 0.0, "no-apply-context")
 
-    # 分數最高者；同分取較早出現者
-    best = max(applied, key=lambda c: (c.confidence, -c.start.toordinal()))
+    def _rank(c: Extracted):
+        anchor = c.start or c.end
+        return (1 if c.ok else 0, c.confidence, -anchor.toordinal() if anchor else 0)
+
+    # 完整區間優先，其次比信心分數；同分取較早出現者
+    best = max(applied, key=_rank)
     best.confidence = max(0.0, min(0.95, round(best.confidence / 7.0, 2)))
     return best
 
