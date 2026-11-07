@@ -21,6 +21,7 @@ from ..attachments import fetch_attachment, find_attachment_links
 from ..config import Config, Source
 from ..http import Fetcher
 from ..models import Notice
+from ..relevance import is_relevant
 
 log = logging.getLogger("watcher.adapters.nss")
 
@@ -73,6 +74,7 @@ class NSSAdapter:
         self.cache_get = cache_get
         self.cache_set = cache_set
         self.keywords = cfg.keywords_for(source)
+        self.strong_keywords = cfg.strong_keywords
         self.excludes = cfg.exclude_keywords
         self.page_keys = cfg.page_keys_for(source)
         self.max_items = source.max_items or int(cfg.get("max_items", 40))
@@ -254,9 +256,12 @@ class NSSAdapter:
         return notices, ""
 
     def _match_keywords(self, title: str, text: str) -> bool:
-        if any(x in title for x in self.excludes):
-            return False
-        blob = f"{title}\n{text}"
-        return any(k in blob for k in self.keywords)
+        return is_relevant(
+            title,
+            f"{title}\n{text}",
+            self.keywords,
+            self.strong_keywords,
+            self.excludes,
+        )
 
     _already_known = None
