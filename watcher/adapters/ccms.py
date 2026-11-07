@@ -16,6 +16,7 @@ from ..attachments import fetch_attachment, find_attachment_links
 from ..config import Config, Source
 from ..http import Fetcher
 from ..models import Notice
+from ..relevance import is_relevant
 
 log = logging.getLogger("watcher.adapters.ccms")
 
@@ -50,6 +51,7 @@ class CCMSAdapter:
         self.source = source
         self.list_url = source.list_url
         self.keywords = cfg.keywords_for(source)
+        self.strong_keywords = cfg.strong_keywords
         self.excludes = cfg.exclude_keywords
         self.max_pages = source.max_pages or int(cfg.get("max_pages", 2))
         self.max_items = source.max_items or int(cfg.get("max_items", 40))
@@ -111,12 +113,14 @@ class CCMSAdapter:
                 continue
             if any(x in e["title"] for x in self.excludes):
                 continue
-            if not any(k in e["title"] for k in self.keywords):
+            if not any(k in e["title"] for k in self.keywords + self.strong_keywords):
                 # 標題沒命中就先跳過，避免為了全部公告打內頁
                 continue
             html, text, links = self._detail(e["url"])
             blob = f"{e['title']}\n{text}"
-            if not any(k in blob for k in self.keywords):
+            if not is_relevant(
+                e["title"], blob, self.keywords, self.strong_keywords, self.excludes
+            ):
                 continue
             n = Notice(
                 source_id=self.source.id,
