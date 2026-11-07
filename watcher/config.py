@@ -58,6 +58,10 @@ class Config:
     def keywords(self) -> list[str]:
         return list(self.settings.get("keywords") or [])
 
+    @property
+    def strong_keywords(self) -> list[str]:
+        return list(self.settings.get("strong_keywords") or [])
+
     def keywords_for(self, source: Source) -> list[str]:
         return list(source.keywords) if source.keywords else self.keywords
 
