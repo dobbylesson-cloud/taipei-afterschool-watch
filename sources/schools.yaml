@@ -89,170 +89,1215 @@ sources:
     max_pages: 3
     note: 教育局「一般公告」頻道，僅抓取含課後照顧/社團關鍵字者
 
-  # ---------- 國小（NSS 平台，2026-11 實測可取）----------
-  - id: meps
-    name: 臺北市國語實驗國民小學
+  - id: yjps
+    name: 臺北市文山區永建國小
     type: nss
-    base_url: https://www.meps.tp.edu.tw
+    base_url: https://www.yjps.tp.edu.tw
+
+  - id: cmes
+    name: 臺北市文山區景美國小
+    type: nss
+    base_url: https://www.cmes.tp.edu.tw
+
+  - id: wxes
+    name: 臺北市文山區萬興國小
+    type: nss
+    base_url: https://www.wxes.tp.edu.tw
+
+  - id: esnccu
+    name: 臺北市文山區政大實小
+    type: schoolweb
+    base_url: https://www.esnccu.tp.edu.tw
+    disabled: true
+    note: 2026-11 實測網站無法連線（ConnectionError），待確認新網址
+
+  - id: hlps
+    name: 臺北市文山區興隆國小
+    type: nss
+    base_url: https://www.hlps.tp.edu.tw
+
+  - id: wkps
+    name: 臺北市文山區武功國小
+    type: nss
+    base_url: https://www.wkps.tp.edu.tw
+
+  - id: wfes
+    name: 臺北市文山區萬芳國小
+    type: nss
+    base_url: https://www.wfes.tp.edu.tw
+
+  - id: chps
+    name: 臺北市文山區景興國小
+    type: nss
+    base_url: https://www.chps.tp.edu.tw
+
+  - id: hhps
+    name: 臺北市文山區興華國小
+    type: nss
+    base_url: https://www.hhps.tp.edu.tw
+
+  - id: lsps
+    name: 臺北市文山區力行國小
+    type: nss
+    base_url: https://www.lsps.tp.edu.tw
+
+  - id: mjes
+    name: 臺北市文山區木柵國小
+    type: nss
+    base_url: https://www.mjes.tp.edu.tw
+
+  - id: saes
+    name: 臺北市文山區辛亥國小
+    type: nss
+    base_url: https://www.saes.tp.edu.tw
+
+  - id: skps
+    name: 臺北市文山區溪口國小
+    type: nss
+    base_url: https://www.skps.tp.edu.tw
+
+  - id: jcps
+    name: 臺北市文山區志清國小
+    type: nss
+    base_url: https://www.jcps.tp.edu.tw
+
+  - id: hdps
+    name: 臺北市文山區興德國小
+    type: nss
+    base_url: https://www.hdps.tp.edu.tw
+
+  - id: bjps
+    name: 臺北市文山區博嘉國小
+    type: schoolweb
+    base_url: https://www.bjps.tp.edu.tw
+
+  - id: mdps
+    name: 臺北市文山區明道國小
+    type: nss
+    base_url: https://www.mdps.tp.edu.tw
+
+  - id: wfps
+    name: 臺北市文山區萬福國小
+    type: schoolweb
+    base_url: https://www.wfps.tp.edu.tw
+    disabled: true
+    note: 校網非共用公告平台（首頁無可用公告列表），待人工確認公告頻道
+
+  - id: mjcskg
+    name: 臺北市文山區中山國小
+    type: nss
+    base_url: https://www.mjcskg.tp.edu.tw
+
+  - id: chjhs
+    name: 臺北市文山區靜心國小
+    type: schoolweb
+    base_url: https://www.chjhs.tp.edu.tw
+
+  - id: zjps
+    name: 臺北市文山區台北實踐
+    type: nss
+    base_url: https://www.zjps.tp.edu.tw
+
+  - id: tsps
+    name: 臺北市文山區再興國小
+    type: nss
+    base_url: https://www.tsps.tp.edu.tw
+
+  - id: japs
+    name: 臺北市大安區仁愛國小
+    type: nss
+    base_url: https://www.japs.tp.edu.tw
+
+  - id: mhps
+    name: 臺北市大安區銘傳國小
+    type: nss
+    base_url: https://www.mhps.tp.edu.tw
+
+  - id: gtes
+    name: 臺北市大安區古亭國小
+    type: nss
+    base_url: https://www.gtes.tp.edu.tw
+
+  - id: ntueees
+    name: 臺北市大安區國北教大
+    type: schoolweb
+    base_url: https://www.ntueees.tp.edu.tw
+
+  - id: hpees
+    name: 臺北市大安區和平實小
+    type: nss
+    base_url: https://www.hpees.tp.edu.tw
+
+  - id: taes
+    name: 臺北市大安區大安國小
+    type: nss
+    base_url: https://www.taes.tp.edu.tw
+
+  - id: gges
+    name: 臺北市大安區公館國小
+    type: nss
+    base_url: https://www.gges.tp.edu.tw
+
+  - id: hmps
+    name: 臺北市大安區新民國小
+    type: schoolweb
+    base_url: https://www.hmps.tp.edu.tw
+
+  - id: snes
+    name: 臺北市大安區新生國小
+    type: nss
+    base_url: https://www.snes.tp.edu.tw
+
+  - id: haps
+    name: 臺北市大安區幸安國小
+    type: nss
+    base_url: https://www.haps.tp.edu.tw
+
+  - id: cups
+    name: 臺北市大安區金華國小
+    type: nss
+    base_url: https://www.cups.tp.edu.tw
+
+  - id: laes
+    name: 臺北市大安區龍安國小
+    type: nss
+    base_url: https://www.laes.tp.edu.tw
+
+  - id: ljjhps
+    name: 臺北市大安區立人國小
+    type: schoolweb
+    base_url: https://www.ljjhps.tp.edu.tw
+
+  - id: jnps
+    name: 臺北市大安區建安國小
+    type: nss
+    base_url: https://www.jnps.tp.edu.tw
+
+  - id: syes
+    name: 臺北市信義區信義國小
+    type: nss
+    base_url: https://www.syes.tp.edu.tw
+
+  - id: hyps
+    name: 臺北市信義區興雅國小
+    type: nss
+    base_url: https://www.hyps.tp.edu.tw
+
+  - id: fdps
+    name: 臺北市信義區福德國小
+    type: nss
+    base_url: https://www.fdps.tp.edu.tw
+
+  - id: yyes
+    name: 臺北市信義區雙永國小
+    type: nss
+    base_url: https://www.yyes.tp.edu.tw
+
+  - id: kfps
+    name: 臺北市信義區光復國小
+    type: nss
+    base_url: https://www.kfps.tp.edu.tw
+
+  - id: baps
+    name: 臺北市信義區博愛國小
+    type: nss
+    base_url: https://www.baps.tp.edu.tw
+
+  - id: wsps
+    name: 臺北市信義區吳興國小
+    type: nss
+    base_url: https://www.wsps.tp.edu.tw
+
+  - id: shps
+    name: 臺北市信義區三興國小
+    type: nss
+    base_url: https://www.shps.tp.edu.tw
+
+  - id: yyes2
+    name: 臺北市信義區永春國小
+    type: nss
+    base_url: https://www.yyes.tp.edu.tw
+
+  - id: yyes22
+    name: 臺北市信義區永吉國小
+    type: nss
+    base_url: https://www.yyes.tp.edu.tw
 
   - id: thps
-    name: 臺北市松山區敦化國民小學
+    name: 臺北市松山區敦化國小
     type: nss
     base_url: https://www.thps.tp.edu.tw
 
   - id: msps
-    name: 臺北市松山區民生國民小學
+    name: 臺北市松山區民生國小
     type: nss
     base_url: https://www.msps.tp.edu.tw
 
-  - id: japs
-    name: 臺北市大安區仁愛國民小學
-    type: nss
-    base_url: https://www.japs.tp.edu.tw
+  - id: sups
+    name: 臺北市松山區西松國小
+    type: schoolweb
+    base_url: https://www.sups.tp.edu.tw
 
-  - id: jnps
-    name: 臺北市大安區建安國民小學
+  - id: jkes
+    name: 臺北市松山區健康國小
     type: nss
-    base_url: https://www.jnps.tp.edu.tw
+    base_url: https://www.jkes.tp.edu.tw
 
-  - id: laes
-    name: 臺北市大安區龍安國民小學
+  - id: mces
+    name: 臺北市松山區民族國小
     type: nss
-    base_url: https://www.laes.tp.edu.tw
+    base_url: https://www.mces.tp.edu.tw
 
-  - id: snes
-    name: 臺北市大安區新生國民小學
+  - id: mqes
+    name: 臺北市松山區民權國小
     type: nss
-    base_url: https://www.snes.tp.edu.tw
+    base_url: https://www.mqes.tp.edu.tw
 
-  - id: hyps
-    name: 臺北市信義區興雅國民小學
+  - id: ssps
+    name: 臺北市松山區松山國小
     type: nss
-    base_url: https://www.hyps.tp.edu.tw
+    base_url: https://www.ssps.tp.edu.tw
 
-  - id: cmes
-    name: 臺北市文山區景美國民小學
-    type: nss
-    base_url: https://www.cmes.tp.edu.tw
+  - id: smps
+    name: 臺北市松山區三民國小
+    type: schoolweb
+    base_url: https://www.smps.tp.edu.tw
+    disabled: true
+    note: 2026-11 實測網站無法連線（ConnectionError），待確認新網址
 
-  - id: ptes
-    name: 臺北市北投區北投國民小學
+  - id: hmes
+    name: 臺北市萬華區西門國小
     type: nss
-    base_url: https://www.ptes.tp.edu.tw
+    base_url: https://www.hmes.tp.edu.tw
 
-  # ---------- 國小（2026-11 擴充，NSS 平台逐校實測）----------
-  - id: kfps
-    name: 臺北市信義區光復國民小學
+  - id: tyes
+    name: 臺北市萬華區東園國小
     type: nss
-    base_url: https://www.kfps.tp.edu.tw
+    base_url: https://www.tyes.tp.edu.tw
 
-  - id: syes
-    name: 臺北市信義區信義國民小學
+  - id: hups
+    name: 臺北市萬華區西園國小
     type: nss
-    base_url: https://www.syes.tp.edu.tw
+    base_url: https://www.hups.tp.edu.tw
 
-  - id: fdps
-    name: 臺北市信義區福德國民小學
+  - id: hces
+    name: 臺北市萬華區華江國小
     type: nss
-    base_url: https://www.fdps.tp.edu.tw
+    base_url: https://www.hces.tp.edu.tw
 
-  - id: mhps
-    name: 臺北市大安區銘傳國民小學
+  - id: fhps
+    name: 臺北市萬華區福星國小
     type: nss
-    base_url: https://www.mhps.tp.edu.tw
+    base_url: https://www.fhps.tp.edu.tw
 
-  - id: gges
-    name: 臺北市大安區公館國民小學
+  - id: tlps
+    name: 臺北市萬華區大理國小
     type: nss
-    base_url: https://www.gges.tp.edu.tw
+    base_url: https://www.tlps.tp.edu.tw
 
-  - id: hpees
-    name: 臺北市大安區和平實驗國民小學
+  - id: soes
+    name: 臺北市萬華區台北新和
     type: nss
-    base_url: https://www.hpees.tp.edu.tw
+    base_url: https://www.soes.tp.edu.tw
 
-  - id: csps
-    name: 臺北市中山區中山國民小學
+  - id: kjes
+    name: 臺北市萬華區光仁國小
+    type: schoolweb
+    base_url: https://www.kjes.tp.edu.tw
+
+  - id: lses
+    name: 臺北市萬華區龍山國小
     type: nss
-    base_url: https://www.csps.tp.edu.tw
+    base_url: https://www.lses.tp.edu.tw
+
+  - id: wtps
+    name: 臺北市萬華區萬大國小
+    type: nss
+    base_url: https://www.wtps.tp.edu.tw
+
+  - id: tlsps
+    name: 臺北市萬華區老松國小
+    type: schoolweb
+    base_url: https://www.tlsps.tp.edu.tw
+    disabled: true
+    note: 2026-11 實測網站無法連線（ConnectionError），待確認新網址
+
+  - id: syps
+    name: 臺北市萬華區雙園國小
+    type: schoolweb
+    base_url: https://www.syps.tp.edu.tw
+
+  - id: tmps
+    name: 臺北市中正區東門國小
+    type: nss
+    base_url: https://www.tmps.tp.edu.tw
+
+  - id: ches
+    name: 臺北市中正區忠孝國小
+    type: nss
+    base_url: https://www.ches.tp.edu.tw
+
+  - id: meps
+    name: 臺北市中正區國語實小
+    type: nss
+    base_url: https://www.meps.tp.edu.tw
+
+  - id: yces
+    name: 臺北市中正區螢橋國小
+    type: nss
+    base_url: https://www.yces.tp.edu.tw
+
+  - id: esut
+    name: 臺北市中正區大學附小
+    type: nss
+    base_url: https://www.esut.tp.edu.tw
+
+  - id: htps
+    name: 臺北市中正區河堤國小
+    type: nss
+    base_url: https://www.htps.tp.edu.tw
+
+  - id: nmes
+    name: 臺北市中正區南門國小
+    type: nss
+    base_url: https://www.nmes.tp.edu.tw
+
+  - id: zhps
+    name: 臺北市大同區日新國小
+    type: nss
+    base_url: https://www.zhps.tp.edu.tw
+
+  - id: ttps
+    name: 臺北市大同區大同國小
+    type: schoolweb
+    base_url: https://www.ttps.tp.edu.tw
+    disabled: true
+    note: 2026-11 實測網站無法連線（SSLError），待確認新網址
+
+  - id: dlps
+    name: 臺北市大同區大龍國小
+    type: nss
+    base_url: https://www.dlps.tp.edu.tw
+
+  - id: sles
+    name: 臺北市大同區雙蓮國小
+    type: nss
+    base_url: https://www.sles.tp.edu.tw
+
+  - id: ypps
+    name: 臺北市大同區延平國小
+    type: nss
+    base_url: https://www.ypps.tp.edu.tw
+
+  - id: plps
+    name: 臺北市大同區蓬萊國小
+    type: nss
+    base_url: https://www.plps.tp.edu.tw
+
+  - id: tpes
+    name: 臺北市大同區太平國小
+    type: nss
+    base_url: https://www.tpes.tp.edu.tw
+
+  - id: ylps
+    name: 臺北市大同區永樂國小
+    type: nss
+    base_url: https://www.ylps.tp.edu.tw
+
+  - id: tjps
+    name: 臺北市大同區大橋國小
+    type: nss
+    base_url: https://www.tjps.tp.edu.tw
+
+  - id: wcps
+    name: 臺北市中山區五常國小
+    type: nss
+    base_url: https://www.wcps.tp.edu.tw
+
+  - id: ccps
+    name: 臺北市中山區長春國小
+    type: nss
+    base_url: https://www.ccps.tp.edu.tw
+
+  - id: jjes
+    name: 臺北市中山區中正國小
+    type: nss
+    base_url: https://www.jjes.tp.edu.tw
+
+  - id: djes
+    name: 臺北市中山區大佳國小
+    type: schoolweb
+    base_url: https://www.djes.tp.edu.tw
+
+  - id: bjes
+    name: 臺北市中山區濱江國小
+    type: schoolweb
+    base_url: https://www.bjes.tp.edu.tw
+
+  - id: clps
+    name: 臺北市中山區吉林國小
+    type: nss
+    base_url: https://www.clps.tp.edu.tw
+
+  - id: tzes
+    name: 臺北市中山區大直國小
+    type: nss
+    base_url: https://www.tzes.tp.edu.tw
 
   - id: caps
-    name: 臺北市中山區長安國民小學
+    name: 臺北市中山區長安國小
     type: nss
     base_url: https://www.caps.tp.edu.tw
 
-  - id: clps
-    name: 臺北市中山區吉林國民小學
+  - id: wses
+    name: 臺北市中山區懷生國小
+    type: schoolweb
+    base_url: https://www.wses.tp.edu.tw
+
+  - id: yaes
+    name: 臺北市中山區永安國小
     type: nss
-    base_url: https://www.clps.tp.edu.tw
-  - id: htps
-    name: 臺北市中正區河堤國民小學
+    base_url: https://www.yaes.tp.edu.tw
+
+  - id: slps
+    name: 臺北市士林區士林國小
     type: nss
-    base_url: https://www.htps.tp.edu.tw
-  - id: hmes
-    name: 臺北市萬華區西門國民小學
+    base_url: https://www.slps.tp.edu.tw
+
+  - id: stes
+    name: 臺北市士林區士東國小
     type: nss
-    base_url: https://www.hmes.tp.edu.tw
-  - id: skps
-    name: 臺北市文山區溪口國民小學
+    base_url: https://www.stes.tp.edu.tw
+
+  - id: stps
+    name: 臺北市士林區社子國小
     type: nss
-    base_url: https://www.skps.tp.edu.tw
-  - id: hhps
-    name: 臺北市文山區興華國民小學
+    base_url: https://www.stps.tp.edu.tw
+
+  - id: hrps
+    name: 臺北市士林區葫蘆國小
     type: nss
-    base_url: https://www.hhps.tp.edu.tw
+    base_url: https://www.hrps.tp.edu.tw
+
+  - id: ynes
+    name: 臺北市士林區雨農國小
+    type: nss
+    base_url: https://www.ynes.tp.edu.tw
+
+  - id: zsps
+    name: 臺北市士林區芝山國小
+    type: nss
+    base_url: https://www.zsps.tp.edu.tw
+
+  - id: jtes
+    name: 臺北市士林區劍潭國小
+    type: nss
+    base_url: https://www.jtes.tp.edu.tw
+
+  - id: flps
+    name: 臺北市士林區福林國小
+    type: nss
+    base_url: https://www.flps.tp.edu.tw
+
+  - id: yses
+    name: 臺北市士林區雨聲國小
+    type: nss
+    base_url: https://www.yses.tp.edu.tw
+
+  - id: bles
+    name: 臺北市士林區百齡國小
+    type: nss
+    base_url: https://www.bles.tp.edu.tw
+
+  - id: wces
+    name: 臺北市士林區文昌國小
+    type: nss
+    base_url: https://www.wces.tp.edu.tw
+
+  - id: fuanps
+    name: 臺北市士林區富安國小
+    type: nss
+    base_url: https://www.fuanps.tp.edu.tw
+
+  - id: tmups
+    name: 臺北市士林區天母國小
+    type: nss
+    base_url: https://www.tmups.tp.edu.tw
+
+  - id: lyps
+    name: 臺北市士林區蘭雅國小
+    type: nss
+    base_url: https://www.lyps.tp.edu.tw
+
+  - id: syups
+    name: 臺北市士林區三玉國小
+    type: nss
+    base_url: https://www.syups.tp.edu.tw
+
+  - id: ptes
+    name: 臺北市北投區北投國小
+    type: nss
+    base_url: https://www.ptes.tp.edu.tw
+
+  - id: kdps
+    name: 臺北市北投區關渡國小
+    type: nss
+    base_url: https://www.kdps.tp.edu.tw
+
+  - id: ysps
+    name: 臺北市北投區逸仙國小
+    type: nss
+    base_url: https://www.ysps.tp.edu.tw
+
+  - id: whps
+    name: 臺北市北投區文化國小
+    type: nss
+    base_url: https://www.whps.tp.edu.tw
+
+  - id: cjps
+    name: 臺北市北投區清江國小
+    type: nss
+    base_url: https://www.cjps.tp.edu.tw
+
+  - id: tyues
+    name: 臺北市北投區桃源國小
+    type: nss
+    base_url: https://www.tyues.tp.edu.tw
+
+  - id: wles
+    name: 臺北市北投區文林國小
+    type: nss
+    base_url: https://www.wles.tp.edu.tw
+
+  - id: yfes
+    name: 臺北市北投區義方國小
+    type: nss
+    base_url: https://www.yfes.tp.edu.tw
+
+  - id: mdes
+    name: 臺北市北投區明德國小
+    type: nss
+    base_url: https://www.mdes.tp.edu.tw
+
+  - id: spps
+    name: 臺北市北投區石牌國小
+    type: schoolweb
+    base_url: https://www.spps.tp.edu.tw
+    disabled: true
+    note: 2026-11 實測網站無法連線（ConnectTimeout），待確認新網址
+
+  - id: lnes
+    name: 臺北市北投區立農國小
+    type: nss
+    base_url: https://www.lnes.tp.edu.tw
+
+  - id: cyps
+    name: 臺北市北投區泉源實小
+    type: nss
+    base_url: https://www.cyps.tp.edu.tw
+
+  - id: wgps
+    name: 臺北市北投區私立薇閣小學
+    type: schoolweb
+    base_url: https://www.wgps.tp.edu.tw
+
+  - id: kshs
+    name: 臺北市北投區私立奎山實中附小
+    type: schoolweb
+    base_url: https://www.kshs.tp.edu.tw
+
+  - id: dtps
+    name: 臺北市北投區大屯國小
+    type: nss
+    base_url: https://www.dtps.tp.edu.tw
+
+  - id: hses
+    name: 臺北市北投區湖山國小
+    type: nss
+    base_url: https://www.hses.tp.edu.tw
+
+  - id: htes
+    name: 臺北市北投區湖田國小
+    type: nss
+    base_url: https://www.htes.tp.edu.tw
+
+  - id: nhes
+    name: 臺北市內湖區內湖國小
+    type: nss
+    base_url: https://www.nhes.tp.edu.tw
+
+  - id: mhups
+    name: 臺北市內湖區明湖國小
+    type: nss
+    base_url: https://www.mhups.tp.edu.tw
+
+  - id: bhps
+    name: 臺北市內湖區碧湖國小
+    type: nss
+    base_url: https://www.bhps.tp.edu.tw
+
+  - id: dfps
+    name: 臺北市內湖區東湖國小
+    type: nss
+    base_url: https://www.dfps.tp.edu.tw
+
+  - id: hhups
+    name: 臺北市內湖區西湖國小
+    type: nss
+    base_url: https://www.hhups.tp.edu.tw
+
+  - id: lnps
+    name: 臺北市內湖區麗山國小
+    type: schoolweb
+    base_url: https://www.lnps.tp.edu.tw
+    disabled: true
+    note: 2026-11 實測網站無法連線（ConnectTimeout），待確認新網址
+
+  - id: lhes
+    name: 臺北市內湖區麗湖國小
+    type: nss
+    base_url: https://www.lhes.tp.edu.tw
+
+  - id: klps
+    name: 臺北市內湖區康寧國小
+    type: nss
+    base_url: https://www.klps.tp.edu.tw
+
+  - id: nhps
+    name: 臺北市內湖區南湖國小
+    type: nss
+    base_url: https://www.nhps.tp.edu.tw
+
   - id: tmes
-    name: 臺北市內湖區潭美國民小學
+    name: 臺北市內湖區潭美國小
     type: nss
     base_url: https://www.tmes.tp.edu.tw
-  - id: hces
-    name: 臺北市萬華區華江國民小學
+
+  - id: shes
+    name: 臺北市內湖區新湖國小
     type: nss
-    base_url: https://www.hces.tp.edu.tw
+    base_url: https://www.shes.tp.edu.tw
+
+  - id: whups
+    name: 臺北市內湖區文湖國小
+    type: nss
+    base_url: https://www.whups.tp.edu.tw
+
+  - id: dhps
+    name: 臺北市內湖區大湖國小
+    type: nss
+    base_url: https://www.dhps.tp.edu.tw
+
+  - id: hsps
+    name: 臺北市南港區胡適國小
+    type: nss
+    base_url: https://www.hsps.tp.edu.tw
+
+  - id: nkps
+    name: 臺北市南港區南港國小
+    type: schoolweb
+    base_url: https://www.nkps.tp.edu.tw
+    disabled: true
+    note: 2026-11 實測網站無法連線（SSLError），待確認新網址
+
+  - id: yhes
+    name: 臺北市南港區玉成國小
+    type: nss
+    base_url: https://www.yhes.tp.edu.tw
+
+  - id: ctps
+    name: 臺北市南港區成德國小
+    type: nss
+    base_url: https://www.ctps.tp.edu.tw
+
+  - id: sdps
+    name: 臺北市南港區修德國小
+    type: nss
+    base_url: https://www.sdps.tp.edu.tw
+
+  - id: zzes
+    name: 臺北市南港區舊莊國小
+    type: nss
+    base_url: https://www.zzes.tp.edu.tw
+
+  - id: thes
+    name: 臺北市南港區東新國小
+    type: nss
+    base_url: https://www.thes.tp.edu.tw
+
+  - id: xdes
+    name: 新北市新店區新店國小
+    type: schoolweb
+    base_url: https://www.xdes.ntpc.edu.tw
+    school_code: "014666"
+
+  - id: soes2
+    name: 臺北市新店區新和國小
+    type: nss
+    base_url: https://www.soes.tp.edu.tw
+
+  - id: takes
+    name: 新北市新店區安坑國小
+    type: schoolweb
+    base_url: https://www.takes.ntpc.edu.tw
+    school_code: "014E20"
+
+  - id: tspes
+    name: 新北市新店區北新國小
+    type: schoolweb
+    base_url: https://www.tspes.ntpc.edu.tw
+    school_code: "014794"
+
+  - id: tcsps
+    name: 新北市新店區雙城國小
+    type: schoolweb
+    base_url: https://www.tcsps.ntpc.edu.tw
+    school_code: "014673"
+
+  - id: chtes
+    name: 新北市新店區青潭國小
+    type: schoolweb
+    base_url: https://www.chtes.ntpc.edu.tw
+    school_code: "014668"
+
+  - id: sfes
+    name: 新北市新店區雙峰國小
+    type: schoolweb
+    base_url: https://www.sfes.ntpc.edu.tw
+    school_code: "014669"
+
+  - id: whps2
+    name: 新北市永和區網溪國小
+    type: schoolweb
+    base_url: https://www.whps.ntpc.edu.tw
+    school_code: "014E01"
+
+  - id: ypes
+    name: 新北市永和區永平國小
+    type: schoolweb
+    base_url: https://www.ypes.ntpc.edu.tw
+    school_code: "014645"
+
+  - id: cjps2
+    name: 新北市永和區及人國小
+    type: schoolweb
+    base_url: https://www.cjps.ntpc.edu.tw
+    school_code: "011603"
+
+  - id: hles
+    name: 新北市永和區秀朗國小
+    type: schoolweb
+    base_url: https://www.hles.ntpc.edu.tw
+    school_code: "014E35"
+
+  - id: yhes2
+    name: 新北市永和區永和國小
+    type: schoolweb
+    base_url: https://www.yhes.ntpc.edu.tw
+    school_code: "014641"
+
+  - id: fsps
+    name: 新北市中和區復興國小
+    type: schoolweb
+    base_url: https://web.fsps.ntpc.edu.tw
+    school_code: "014E16"
+
+  - id: hnps
+    name: 新北市中和區興南國小
+    type: schoolweb
+    base_url: https://www.hnps.ntpc.edu.tw
+    school_code: "014635"
+
+  - id: jcps2
+    name: 新北市中和區自強國小
+    type: schoolweb
+    base_url: https://www.jcps.ntpc.edu.tw
+    school_code: "014638"
+
+  - id: jsps
+    name: 新北市中和區景新國小
+    type: schoolweb
+    base_url: https://www.jsps.ntpc.edu.tw
+    school_code: "014640"
+
+  - id: chps2
+    name: 新北市中和區錦和國小
+    type: schoolweb
+    base_url: https://www.chps.ntpc.edu.tw
+    school_code: "014639"
+
+  - id: sles2
+    name: 新北市板橋區沙崙國小
+    type: schoolweb
+    base_url: https://www.sles.ntpc.edu.tw
+    school_code: "014611"
+
+  - id: ctes
+    name: 新北市板橋區江翠國小
+    type: schoolweb
+    base_url: https://www.ctes.ntpc.edu.tw
+    school_code: "014608"
+
+  - id: wses2
+    name: 新北市板橋區文聖國小
+    type: schoolweb
+    base_url: https://www.wses.ntpc.edu.tw
+    school_code: "014610"
+
+  - id: wdps
+    name: 新北市板橋區文德國小
+    type: schoolweb
+    base_url: https://www.wdps.ntpc.edu.tw
+    school_code: "014612"
+
+  - id: pcps
+    name: 新北市板橋區板橋國小
+    type: schoolweb
+    base_url: https://www.pcps.ntpc.edu.tw
+    school_code: "014601"
+
+  - id: spes
+    name: 新北市板橋區新埔國小
+    type: schoolweb
+    base_url: https://www.spes.ntpc.edu.tw
+    school_code: "014603"
+
+  - id: kkes
+    name: 新北市板橋區國光國小
+    type: schoolweb
+    base_url: https://www.kkes.ntpc.edu.tw
+    school_code: "014602"
+
+  - id: sips
+    name: 新北市板橋區溪洲國小
+    type: schoolweb
+    base_url: https://www.sips.ntpc.edu.tw
+    school_code: "014770"
+
+  - id: pces
+    name: 新北市板橋區埔墘國小
+    type: schoolweb
+    base_url: https://www.pces.ntpc.edu.tw
+    school_code: "014604"
+
+  - id: jges
+    name: 新北市板橋區莒光國小
+    type: schoolweb
+    base_url: https://www.jges.ntpc.edu.tw
+    school_code: "014605"
+
+  - id: zjps2
+    name: 臺北市板橋區新北實踐
+    type: nss
+    base_url: https://www.zjps.tp.edu.tw
+
+  - id: tgps
+    name: 新北市板橋區大觀國小
+    type: schoolweb
+    base_url: https://www.tgps.ntpc.edu.tw
+    school_code: "014769"
+
+  - id: cges
+    name: 新北市板橋區重慶國小
+    type: schoolweb
+    base_url: https://www.cges.ntpc.edu.tw
+    school_code: "014772"
+
+  - id: gfes
+    name: 新北市土城區廣福國小
+    type: schoolweb
+    base_url: https://www.gfes.ntpc.edu.tw
+    school_code: "014649"
+
+  - id: ttcps
+    name: 新北市土城區土城國小
+    type: schoolweb
+    base_url: https://www.ttcps.ntpc.edu.tw
+    school_code: "014646"
+
+  - id: llps
+    name: 新北市土城區樂利國小
+    type: schoolweb
+    base_url: https://www.llps.ntpc.edu.tw
+    school_code: "014773"
+
+  - id: cses
+    name: 新北市土城區清水國小
+    type: schoolweb
+    base_url: https://www.cses.ntpc.edu.tw
+    school_code: "014E47"
+
+  - id: anhoes
+    name: 新北市土城區安和國小
+    type: schoolweb
+    base_url: https://www.anhoes.ntpc.edu.tw
+    school_code: "014774"
+
+  - id: dpes
+    name: 新北市土城區頂埔國小
+    type: schoolweb
+    base_url: https://www.dpes.ntpc.edu.tw
+    school_code: "014648"
+
+  - id: slps2
+    name: 新北市樹林區樹林國小
+    type: schoolweb
+    base_url: https://www.slps.ntpc.edu.tw
+    school_code: "014613"
+
+  - id: gyes
+    name: 新北市樹林區柑園國小
+    type: schoolweb
+    base_url: https://www.gyes.ntpc.edu.tw
+    school_code: "014619"
+
+  - id: ytps
+    name: 新北市樹林區育德國小
+    type: schoolweb
+    base_url: https://www.ytps.ntpc.edu.tw
+    school_code: "014618"
+
+  - id: sdes
+    name: 新北市樹林區三多國小
+    type: schoolweb
+    base_url: https://www.sdes.ntpc.edu.tw
+    school_code: "014767"
+
+  - id: sjes
+    name: 新北市樹林區山佳國小
+    type: schoolweb
+    base_url: https://www.sjes.ntpc.edu.tw
+    school_code: "014617"
+
+  - id: wles2
+    name: 新北市樹林區武林國小
+    type: schoolweb
+    base_url: https://www.wles.ntpc.edu.tw
+    school_code: "014616"
+
+  - id: yles
+    name: 新北市樹林區育林國小
+    type: schoolweb
+    base_url: https://3w.yles.ntpc.edu.tw
+    school_code: "014776"
+
+  - id: pfps
+    name: 新北市樹林區彭福國小
+    type: schoolweb
+    base_url: https://www.pfps.ntpc.edu.tw
+    school_code: "014775"
+
+  - id: sies
+    name: 新北市新莊區思賢國小
+    type: schoolweb
+    base_url: https://www.sies.ntpc.edu.tw
+    school_code: "014731"
+
+  - id: fnes
+    name: 新北市新莊區豐年國小
+    type: schoolweb
+    base_url: https://www.fnes.ntpc.edu.tw
+    school_code: "014734"
+
+  - id: ches2
+    name: 新北市新莊區中信國小
+    type: schoolweb
+    base_url: https://www.ches.ntpc.edu.tw
+    school_code: "014791"
+
+  - id: jgps
+    name: 新北市新莊區中港國小
+    type: schoolweb
+    base_url: https://www.jgps.ntpc.edu.tw
+    school_code: "014730"
+
+  - id: ghes
+    name: 新北市新莊區光華國小
+    type: schoolweb
+    base_url: https://www.ghes.ntpc.edu.tw
+    school_code: "014736"
+
+  - id: clps2
+    name: 新北市新莊區昌隆國小
+    type: schoolweb
+    base_url: https://www.clps.ntpc.edu.tw
+    school_code: "014738"
+
+  - id: lfes
+    name: 新北市新莊區榮富國小
+    type: schoolweb
+    base_url: https://www.lfes.ntpc.edu.tw
+    school_code: "014788"
+
+  - id: tshes
+    name: 新北市新莊區興化國小
+    type: schoolweb
+    base_url: https://www.tshes.ntpc.edu.tw
+    school_code: "014765"
+
+  - id: ymes
+    name: 新北市新莊區裕民國小
+    type: schoolweb
+    base_url: https://www.ymes.ntpc.edu.tw
+    school_code: "014789"
+
+  - id: tcps
+    name: 新北市新莊區頭前國小
+    type: schoolweb
+    base_url: https://www.tcps.ntpc.edu.tw
+    school_code: "014732"
+
+  - id: stps2
+    name: 新北市新莊區新泰國小
+    type: schoolweb
+    base_url: https://www.stps.ntpc.edu.tw
+    school_code: "014790"
+
+  - id: tfon
+    name: 新北市新莊區丹鳳國小
+    type: schoolweb
+    base_url: https://www.tfon.ntpc.edu.tw
+    school_code: "014735"
+
+  - id: tres
+    name: 新北市泰山區同榮國小
+    type: schoolweb
+    base_url: https://www.tres.ntpc.edu.tw
+    school_code: "014795"
+
+  - id: mjes2
+    name: 新北市泰山區明志國小
+    type: schoolweb
+    base_url: https://www.mjes.ntpc.edu.tw
+    school_code: "014740"
+
+  - id: tses
+    name: 新北市泰山區泰山國小
+    type: schoolweb
+    base_url: https://www.tses.ntpc.edu.tw
+    school_code: "014739"
+
+  - id: jyes
+    name: 新北市三重區正義國小
+    type: schoolweb
+    base_url: https://www.jyes.ntpc.edu.tw
+    school_code: "014761"
+
+  - id: eces
+    name: 新北市三重區二重國小
+    type: schoolweb
+    base_url: https://www.eces.ntpc.edu.tw
+    school_code: "014763"
+
+  - id: bhes
+    name: 新北市三重區碧華國小
+    type: schoolweb
+    base_url: https://www.bhes.ntpc.edu.tw
+    school_code: "014758"
+
+  - id: skes
+    name: 新北市三重區三光國小
+    type: schoolweb
+    base_url: https://www.skes.ntpc.edu.tw
+    school_code: "014759"
+
+  - id: whes
+    name: 新北市三重區五華國小
+    type: schoolweb
+    base_url: https://www.whes.ntpc.edu.tw
+    school_code: "014785"
+
+  - id: cyps2
+    name: 新北市三重區重陽國小
+    type: schoolweb
+    base_url: https://www.cyps.ntpc.edu.tw
+    school_code: "014784"
+
+  - id: jmes
+    name: 新北市三重區集美國小
+    type: schoolweb
+    base_url: https://www.jmes.ntpc.edu.tw
+    school_code: "014803"
+
+  - id: kses
+    name: 新北市三重區光興國小
+    type: schoolweb
+    base_url: https://www.kses.ntpc.edu.tw
+    school_code: "014760"
+
+  - id: tsces
+    name: 新北市三重區三重國小
+    type: schoolweb
+    base_url: https://www.tsces.ntpc.edu.tw
+    school_code: "014754"
+
+  - id: yfes2
+    name: 新北市三重區永福國小
+    type: schoolweb
+    base_url: https://www.yfes.ntpc.edu.tw
+    school_code: "014755"
+
+  - id: hdes
+    name: 新北市三重區厚德國小
+    type: schoolweb
+    base_url: https://www.hdes.ntpc.edu.tw
+    school_code: "014757"
+
+  - id: gres
+    name: 新北市三重區光榮國小
+    type: schoolweb
+    base_url: https://www.gres.ntpc.edu.tw
+    school_code: "014756"
+
+  - id: glps
+    name: 新北市五股區更寮國小
+    type: schoolweb
+    base_url: https://www.glps.ntpc.edu.tw
+    school_code: "014742"
+
+  - id: wkes
+    name: 新北市五股區五股國小
+    type: schoolweb
+    base_url: https://www.wkes.ntpc.edu.tw
+    school_code: "014743"
+
+  - id: tyes2
+    name: 新北市五股區德音國小
+    type: schoolweb
+    base_url: https://www.tyes.ntpc.edu.tw
+    school_code: "014792"
+
+  - id: cjoes
+    name: 新北市五股區成州國小
+    type: schoolweb
+    base_url: https://www.cjoes.ntpc.edu.tw
+    school_code: "014741"
+
+  - id: lcps
+    name: 新北市蘆洲區鷺江國小
+    type: schoolweb
+    base_url: https://www.lcps.ntpc.edu.tw
+    school_code: "014745"
+
   - id: cips
-    name: 臺北市中正區忠義國民小學
+    name: 臺北市蘆洲區忠義國小
     type: nss
     base_url: https://www.cips.tp.edu.tw
-  - id: ylps
-    name: 臺北市大同區永樂國民小學
-    type: nss
-    base_url: https://www.ylps.tp.edu.tw
-  - id: saes
-    name: 臺北市文山區辛亥國民小學
-    type: nss
-    base_url: https://www.saes.tp.edu.tw
-  - id: zhps
-    name: 臺北市大同區日新國民小學
-    type: nss
-    base_url: https://www.zhps.tp.edu.tw
-  - id: fhps
-    name: 臺北市萬華區福星國民小學
-    type: nss
-    base_url: https://www.fhps.tp.edu.tw
-  - id: jjes
-    name: 臺北市中山區中正國民小學
-    type: ccms
-    list_url: https://web.jjes.tp.edu.tw/
-    disabled: true
-    note: 校網為 CCMS 但無自有公告頻道，僅轉載教育局公告；已由 doe_taipei 來源取代
 
-  - id: djes
-    name: 臺北市中山區大佳國民小學
-    type: ccms
-    list_url: https://www.djes.tp.edu.tw/
-    disabled: true
-    note: 校網為 CCMS 但無自有公告頻道，僅轉載教育局公告；已由 doe_taipei 來源取代
+  - id: lces
+    name: 新北市蘆洲區蘆洲國小
+    type: schoolweb
+    base_url: https://www.lces.ntpc.edu.tw
+    school_code: "014744"
 
-  - id: ssps
-    name: 臺北市松山區松山國民小學
-    type: nss
-    base_url: http://web.ssps.tp.edu.tw
-    disabled: true
-    note: 2026-11 實測站台連線失敗（ConnectionError），待人工確認新網址
+  - id: tces
+    name: 新北市蘆洲區成功國小
+    type: schoolweb
+    base_url: https://www.tces.ntpc.edu.tw
+    school_code: "014786"
 
-  - id: smps
-    name: 臺北市松山區三民國民小學
-    type: nss
-    base_url: http://www.smps.tp.edu.tw
-    disabled: true
-    note: 2026-11 實測站台連線失敗（ConnectionError），待人工確認新網址
+  - id: dsps
+    name: 新北市汐止區東山國小
+    type: schoolweb
+    base_url: https://www.dsps.ntpc.edu.tw
+    school_code: "014656"
